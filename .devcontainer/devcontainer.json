@@ -1,0 +1,23 @@
+{
+ "name": "ml-dockerfile Dev Container",
+ "build": {
+  "dockerfile": "Dockerfile",
+  "context": "."
+ },
+ "runArgs": ["--gpus=all"],
+ "customizations": {
+  "vscode": {
+   "extensions": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-python.vscode-pylance"
+   ]
+  }
+ },
+ "forwardPorts": [8888, 6006],
+ "workspaceFolder": "/workspace",
+ "mounts": [
+  "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+ ],
+ "postCreateCommand": "python -m pip install --upgrade pip && [ -f requirements.txt ] && pip install -r requirements.txt || true"
+}
